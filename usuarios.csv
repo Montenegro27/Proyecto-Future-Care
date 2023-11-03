@@ -1,0 +1,5 @@
+usuario,contraseña,tipo,especialidad,numSeguro
+medico1,1244,medico,Cardiología,0
+medico2,1234,medico,Pediatría,0
+paciente1,2505,paciente,,123456
+paciente2,7896,paciente,,789012
