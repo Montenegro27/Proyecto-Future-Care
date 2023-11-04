@@ -1,5 +1,7 @@
 Nombre,Tipo de Medicamento,Disponibilidad,Cantidad
-Paracetamol,Analgésico,Disponible,100
-Ibuprofeno,Antiinflamatorio,Disponible,50
+Paracetamol,Analgésico,Disponible,20
+Ibuprofeno,Antiinflamatorio,Disponible,40
 Amoxicilina,Antibiótico,Agotado,0
-Omeprazol,Antiácido,Disponible,75
+Omeprazol,Antiácido,Disponible,7
+asd,si,Disponible,90
+P,j,Agotado,0
