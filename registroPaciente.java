@@ -8,7 +8,7 @@ public class registroPaciente{
         Scanner teclado = new Scanner(System.in);
         ArrayList<Paciente> lista_paciente = new ArrayList<Paciente>();
 
-        //CARGAR ARCHIVO .CSV
+        //CARGAR ARCHIVO .CSV donde estan registrados los pacientes
         try{
             File archivo = new File("pacientes.csv");
             Scanner scanner = new Scanner(archivo);
@@ -83,7 +83,7 @@ public class registroPaciente{
     }
 }
 
-
+//la calse paciente
 class Paciente {
     private int id;
     private String nombre;
