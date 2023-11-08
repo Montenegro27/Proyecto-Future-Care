@@ -86,7 +86,7 @@ public class registroMedicamento{
     }
 }
 
-
+//crear clase medicament0
 class Medicamento {
     private String nombre;
     private String tipo;
@@ -100,6 +100,7 @@ class Medicamento {
         this.cantidad = cantidad;
     }
 
+//getters
     public String getNombre() {
         return nombre;
     }
