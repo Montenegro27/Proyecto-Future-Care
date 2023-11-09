@@ -19,6 +19,10 @@ class historial {
         this.alergias = alergias;
     }
 
+    public historial(String idCSV, String string, String string2, String string3, String string4, String string5,
+            String string6, String string7, String string8, String string9) {
+    }
+
     public String getId() {
         return id;
     }

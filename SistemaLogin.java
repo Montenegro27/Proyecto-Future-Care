@@ -40,7 +40,6 @@ public class SistemaLogin {
                 String tipo = partes[2];
                 String especialidad = partes[3];
                 String numSeguro = partes[4];
-
                 if (usuarioCSV.equals(usuario) && contrasenaCSV.equals(contrasena)) {
                     return new Usuario(usuario, tipo, especialidad, numSeguro);
                 }
@@ -72,7 +71,7 @@ public class SistemaLogin {
     
         switch (opcion) {
             case 1:
-            historial paciente = obtenerPacientePorId(usuario.getUsuario());
+                historial paciente = obtenerPacientePorId(usuario.getNumSeguro());
 
                 if (paciente != null) {
                     mostrarMenuHistorialMedico(paciente);
@@ -130,21 +129,25 @@ public class SistemaLogin {
         }
     }
 
-    public static historial obtenerPacientePorId(String id) {
+    public static historial obtenerPacientePorId(String idPaciente) {
         try (BufferedReader reader = new BufferedReader(new FileReader("historialm.csv"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] partes = line.split(",");
-                String idPaciente = partes[0];
-                if (idPaciente.equals(id)) {
-                    return new historial(idPaciente, partes[1], partes[2], partes[3], partes[4], partes[5], partes[8], partes[9]);
+                String idCSV = partes[0].trim(); // Utiliza trim() para eliminar espacios en blanco
+    
+                // Compara el ID después de eliminar espacios en blanco
+                if (idCSV.equals(idPaciente.trim())) {
+                    return new historial(idCSV, partes[1], partes[2], partes[3], partes[4], partes[5], partes[6], partes[7], partes[8], partes[9]);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println("No se encontró información del paciente con ID: " + idPaciente);
         return null;
-    }
+    }    
+    
 }
 class Usuario {
     private String usuario;
