@@ -7,8 +7,10 @@ class historial {
     private String alturaPeso;
     private String medicamentoActual;
     private String alergias;
+    private String antecedentesMedicos;
+    private String antecedentesQuirurgicos;
 
-    public historial(String id, String nombre, String edad, String sexo, String grupoSanguineo, String alturaPeso, String medicamentoActual, String alergias) {
+    public historial(String id, String nombre, String edad, String sexo, String grupoSanguineo, String alturaPeso, String medicamentoActual, String alergias, String antecedentesMedicos, String antecedentesQuirurgicos) {
         this.id = id;
         this.nombre = nombre;
         this.edad = edad;
@@ -17,10 +19,15 @@ class historial {
         this.alturaPeso = alturaPeso;
         this.medicamentoActual = medicamentoActual;
         this.alergias = alergias;
+        this.antecedentesMedicos = antecedentesMedicos;
+        this.antecedentesQuirurgicos = antecedentesQuirurgicos;
     }
 
-    public historial(String idCSV, String string, String string2, String string3, String string4, String string5,
-            String string6, String string7, String string8, String string9) {
+    public historial(String idCSV, String antecedentesMedicos2, String antecedentesQuirurgicos2) {
+    }
+
+    public historial(String idCSV, String nombre2, String edad2, String sexo2, String grupoSanguineo2,
+            String alturaPeso2, String medicamentoActual2, String alergias2) {
     }
 
     public String getId() {
@@ -53,5 +60,13 @@ class historial {
 
     public String getAlergias() {
         return alergias;
+    }
+
+    public String getAntecedentesMedicos() {
+        return antecedentesMedicos;
+    }
+
+    public String getAntecedentesQuirurgicos() {
+        return antecedentesQuirurgicos;
     }
 }
