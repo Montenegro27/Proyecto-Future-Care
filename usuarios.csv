@@ -1,5 +1,5 @@
-usuario,contraseña,tipo,especialidad,numSeguro,id
-medico1,1244,medico,Cardiología,0,6790
-medico2,1234,medico,Pediatría,0,8098
-paciente1,2505,paciente,N/A,123456,4
-paciente2,7896,paciente,N/A,789012,1
+usuario,contraseña,tipo,especialidad,id,numSeguro
+medico1,1244,medico,Cardiología,2300,0
+medico2,1234,medico,Pediatría,2301,0
+paciente1,2505,paciente,N/A,4,123456
+paciente2,7896,paciente,N/A,1,789012

@@ -61,18 +61,19 @@ public class SistemaLogin {
 
     public static void mostrarMenuPaciente(Usuario usuario) {
         System.out.println("Bienvenido, Paciente " + usuario.getUsuario());
-        System.out.println("Número de Seguro: " + usuario.getNumSeguro());
+        String pacienteId = usuario.getNumSeguro(); // Obtiene el número de ID
+        System.out.println("Número de ID: " + pacienteId);
         System.out.println("1. Ver historial médico");
         System.out.println("2. Mostrar información del paciente");
         System.out.println("3. Salir");
-    
+        
         Scanner scanner = new Scanner(System.in);
         int opcion = scanner.nextInt();
-    
+        
+        historial paciente = obtenerPacientePorId(pacienteId); // Obtiene el paciente por su número de seguro
+        
         switch (opcion) {
             case 1:
-                historial paciente = obtenerPacientePorId(usuario.getNumSeguro());
-
                 if (paciente != null) {
                     mostrarMenuHistorialMedico(paciente);
                 } else {
@@ -80,14 +81,14 @@ public class SistemaLogin {
                 }
                 break;
             case 2:
-                // Implementa la lógica para solicitar cita aquí
+                // Implementa la lógica para mostrar información del paciente
                 break;
             case 3:
                 System.exit(0);
             default:
                 System.out.println("Opción no válida. Inténtalo de nuevo.");
         }
-    }
+    }    
 
     public static void mostrarMenuHistorialMedico(historial paciente) {
         System.out.println("Historial Médico de " + paciente.getNombre());
@@ -134,11 +135,19 @@ public class SistemaLogin {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] partes = line.split(",");
-                String idCSV = partes[0].trim(); // Utiliza trim() para eliminar espacios en blanco
+                String idCSV = partes[0].trim();
     
-                // Compara el ID después de eliminar espacios en blanco
                 if (idCSV.equals(idPaciente.trim())) {
-                    return new historial(idCSV, partes[1], partes[2], partes[3], partes[4], partes[5], partes[6], partes[7], partes[8], partes[9]);
+                    String nombre = partes[1];
+                    String edad = partes[2];
+                    String sexo = partes[3];
+                    String grupoSanguineo = partes[4];
+                    String alturaPeso = partes[5];
+                    String medicamentoActual = partes[6];
+                    String alergias = partes[7];
+    
+                    // Crea y devuelve un objeto historial con los datos leídos
+                    return new historial(idCSV, nombre, edad, sexo, grupoSanguineo, alturaPeso, medicamentoActual, alergias);
                 }
             }
         } catch (IOException e) {
@@ -146,8 +155,7 @@ public class SistemaLogin {
         }
         System.out.println("No se encontró información del paciente con ID: " + idPaciente);
         return null;
-    }    
-    
+    }
 }
 class Usuario {
     private String usuario;
