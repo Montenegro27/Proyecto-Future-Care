@@ -9,16 +9,16 @@ public class SistemaLogin {
         Scanner scanner = new Scanner(System.in);
     
         while (true) {
-            limpiarConsola();// Limpiar la consola al inicio de cada iteración
+            limpiarConsola(); // Limpiar la consola al inicio de cada iteración
             System.out.println("Iniciar sesión:");
             System.out.print("Usuario: ");
             String usuario = scanner.next();
             System.out.print("Contraseña: ");
             String contrasena = scanner.next();
-    
+
             // Realizar la autenticación
             Usuario usuarioAutenticado = autenticar(usuario, contrasena);
-    
+
             if (usuarioAutenticado != null) {
                 if (usuarioAutenticado.getTipo().equals("medico")) {
                     mostrarMenuMedico(usuarioAutenticado);
@@ -64,7 +64,6 @@ public class SistemaLogin {
         System.out.println("4. Salir");
     }
 
-    
     public static void mostrarMenuPaciente(Usuario usuario) {
         while (true) {
             limpiarConsola();
@@ -76,7 +75,7 @@ public class SistemaLogin {
             System.out.println("4. Salir");
 
             Scanner scanner = new Scanner(System.in);
-            int opcion = scanner.nextInt();
+            int opcion = obtenerOpcion(scanner);
 
             historial paciente = obtenerPacientePorId(usuario.getNumSeguro());
             switch (opcion) {
@@ -95,17 +94,51 @@ public class SistemaLogin {
                     }
                     break;
                 case 3:
+                    // Realizar acciones de revisar citas (puedes agregar más funcionalidades aquí)
+                    break;
                 case 4:
-                    return; // Salir del bucle y volver al menú principal
+                    if (confirmarSalirSesion(scanner)) {
+                        if (confirmarApagarPrograma(scanner)) {
+                            System.exit(0); // Salir del programa
+                        }
+                    }
+                    break;
                 default:
                     System.out.println("Opción no válida. Inténtalo de nuevo.");
             }
         }
     }
 
+    public static boolean confirmarSalirSesion(Scanner scanner) {
+        System.out.print("¿Seguro que quieres salir de la sesión? (si/no): ");
+        String respuesta = scanner.next().toLowerCase();
+        if (respuesta.equals("si")) {
+            return true; // Salir del bucle y volver al menú principal
+        } else if (respuesta.equals("no")) {
+            return false; // No salir de la sesión, continuar en el menú paciente
+        } else {
+            System.out.println("Respuesta no válida. Inténtalo de nuevo.");
+            return confirmarSalirSesion(scanner);
+        }
+    }
+
+    public static boolean confirmarApagarPrograma(Scanner scanner) {
+        System.out.print("¿Quieres apagar el programa? (si/no): ");
+        String respuesta = scanner.next().toLowerCase();
+        if (respuesta.equals("si")) {
+            return true; // Salir del programa
+        } else if (respuesta.equals("no")) {
+            System.out.println("Volviendo al inicio de sesión...");
+            return false; // No salir del programa, volver al inicio de sesión
+        } else {
+            System.out.println("Respuesta no válida. Inténtalo de nuevo.");
+            return confirmarApagarPrograma(scanner); // Llamada recursiva si la respuesta no es válida
+        }
+    }
+
     public static void mostrarMenuHistorialMedico(historial paciente) {
         Scanner scanner = new Scanner(System.in);
-    
+
         do {
             limpiarConsola();
             System.out.println("Historial Médico de " + paciente.getNombre());
@@ -116,9 +149,9 @@ public class SistemaLogin {
             System.out.println("5. Ver medicamento actual");
             System.out.println("6. Ver alergias");
             System.out.println("7. Volver al menú paciente");
-    
-            int opcion = scanner.nextInt();
-    
+
+            int opcion = obtenerOpcion(scanner);
+
             switch (opcion) {
                 case 1:
                     System.out.println("Edad: " + paciente.getEdad());
@@ -143,31 +176,31 @@ public class SistemaLogin {
                 default:
                     System.out.println("Opción no válida. Inténtalo de nuevo.");
             }
-    
+
             System.out.println("¿Quieres ver más información? (si/no)");
             String respuesta = scanner.next().toLowerCase();
-    
+
             if (!respuesta.equals("si")) {
                 return; // Salir si la respuesta no es "si"
             }
-    
+
         } while (true); // Repetir el bucle mientras el usuario quiera ver más información
     }
 
     public static void mostrarSubMenuAntecedentes(Usuario usuario) {
         Scanner scanner = new Scanner(System.in);
-    
+
         do {
             limpiarConsola();
             System.out.println("Seleccione una opción:");
             System.out.println("1. Ver antecedentes médicos");
             System.out.println("2. Ver antecedentes quirúrgicos");
             System.out.println("3. Volver al menú paciente");
-    
-            int opcionSubMenu = scanner.nextInt();
-    
+
+            int opcionSubMenu = obtenerOpcion(scanner);
+
             historial paciente = obtenerPacientePorId(usuario.getNumSeguro());
-    
+
             switch (opcionSubMenu) {
                 case 1:
                     if (paciente != null) {
@@ -188,14 +221,14 @@ public class SistemaLogin {
                 default:
                     System.out.println("Opción no válida. Inténtalo de nuevo.");
             }
-    
+
             System.out.println("¿Quieres ver más información? (si/no)");
             String respuesta = scanner.next().toLowerCase();
-    
+
             if (!respuesta.equals("si")) {
                 return; // Salir si la respuesta no es "si"
             }
-    
+
         } while (true); // Repetir el bucle mientras el usuario quiera ver más información
     }    
 
@@ -246,6 +279,18 @@ public class SistemaLogin {
             e.printStackTrace();
         }
     }    
+    
+    public static int obtenerOpcion(Scanner scanner) {
+        while (true) {
+            try {
+                return scanner.nextInt();
+            } catch (java.util.InputMismatchException e) {
+                // Capturar la excepción si no se ingresa un número
+                System.out.println("Por favor, ingresa un número válido.");
+                scanner.nextLine(); // Limpiar el buffer del scanner
+            }
+        }
+    }
 
 }
 class Usuario {
