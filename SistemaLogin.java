@@ -1,3 +1,5 @@
+// Este archivo debera ejecutarse para el funcionamiento del programa
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,7 +9,8 @@ public class SistemaLogin {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-    
+
+        buclePrincipal: // Etiqueta de bucle para reiniciar el proceso
         while (true) {
             limpiarConsola(); // Limpiar la consola al inicio de cada iteración
             System.out.println("Iniciar sesión:");
@@ -23,7 +26,9 @@ public class SistemaLogin {
                 if (usuarioAutenticado.getTipo().equals("medico")) {
                     mostrarMenuMedico(usuarioAutenticado);
                 } else if (usuarioAutenticado.getTipo().equals("paciente")) {
-                    mostrarMenuPaciente(usuarioAutenticado);
+                    if (!mostrarMenuPaciente(usuarioAutenticado, scanner)) {
+                        break buclePrincipal; // Salir del bucle principal y reiniciar el proceso
+                    }
                 }
             } else {
                 System.out.println("Credenciales incorrectas. Inténtalo de nuevo.");
@@ -64,7 +69,8 @@ public class SistemaLogin {
         System.out.println("4. Salir");
     }
 
-    public static void mostrarMenuPaciente(Usuario usuario) {
+    public static boolean mostrarMenuPaciente(Usuario usuario, Scanner scanner) {
+        bucleMenuPaciente:
         while (true) {
             limpiarConsola();
             System.out.println("Bienvenido, Paciente " + usuario.getUsuario());
@@ -73,10 +79,9 @@ public class SistemaLogin {
             System.out.println("2. Mostrar información del paciente");
             System.out.println("3. Revisar citas");
             System.out.println("4. Salir");
-
-            Scanner scanner = new Scanner(System.in);
+    
             int opcion = obtenerOpcion(scanner);
-
+    
             historial paciente = obtenerPacientePorId(usuario.getNumSeguro());
             switch (opcion) {
                 case 1:
@@ -97,45 +102,18 @@ public class SistemaLogin {
                     // Realizar acciones de revisar citas (puedes agregar más funcionalidades aquí)
                     break;
                 case 4:
-                    if (confirmarSalirSesion(scanner)) {
-                        if (confirmarApagarPrograma(scanner)) {
-                            System.exit(0); // Salir del programa
-                        }
+                    if (confirmarApagarPrograma(scanner)) {
+                        return false; // Salir del programa
+                    } else {
+                        break bucleMenuPaciente; // Salir del bucle del menú paciente y regresar al inicio del bucle principal
                     }
-                    break;
                 default:
                     System.out.println("Opción no válida. Inténtalo de nuevo.");
             }
         }
+        return true; // Regresar true para seguir en el bucle principal
     }
-
-    public static boolean confirmarSalirSesion(Scanner scanner) {
-        System.out.print("¿Seguro que quieres salir de la sesión? (si/no): ");
-        String respuesta = scanner.next().toLowerCase();
-        if (respuesta.equals("si")) {
-            return true; // Salir del bucle y volver al menú principal
-        } else if (respuesta.equals("no")) {
-            return false; // No salir de la sesión, continuar en el menú paciente
-        } else {
-            System.out.println("Respuesta no válida. Inténtalo de nuevo.");
-            return confirmarSalirSesion(scanner);
-        }
-    }
-
-    public static boolean confirmarApagarPrograma(Scanner scanner) {
-        System.out.print("¿Quieres apagar el programa? (si/no): ");
-        String respuesta = scanner.next().toLowerCase();
-        if (respuesta.equals("si")) {
-            return true; // Salir del programa
-        } else if (respuesta.equals("no")) {
-            System.out.println("Volviendo al inicio de sesión...");
-            return false; // No salir del programa, volver al inicio de sesión
-        } else {
-            System.out.println("Respuesta no válida. Inténtalo de nuevo.");
-            return confirmarApagarPrograma(scanner); // Llamada recursiva si la respuesta no es válida
-        }
-    }
-
+    
     public static void mostrarMenuHistorialMedico(historial paciente) {
         Scanner scanner = new Scanner(System.in);
 
@@ -292,7 +270,13 @@ public class SistemaLogin {
         }
     }
 
+    public static boolean confirmarApagarPrograma(Scanner scanner) {
+        System.out.print("¿Quieres apagar el programa? (si/no): ");
+        String respuesta = scanner.next().toLowerCase();
+        return respuesta.equals("si");
+    }
 }
+
 class Usuario {
     private String usuario;
     private String tipo;
