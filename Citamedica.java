@@ -1,4 +1,6 @@
-class CitaMedica {
+import java.util.Random;
+
+public class CitaMedica {
     private int id;
     private Paciente paciente;
     private Medico medico;
@@ -6,11 +8,18 @@ class CitaMedica {
     private String hora;
 
     public CitaMedica(int id, Paciente paciente, Medico medico, String fecha, String hora) {
-        this.id = id;
+        this.id = generarID();
         this.paciente = paciente;
         this.medico = medico;
         this.fecha = fecha;
         this.hora = hora;
+    }
+
+    public int generarID() {
+        Random random = new Random();
+
+        return random.nextInt(9999);
+
     }
 
     // Getters y setters
