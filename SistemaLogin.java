@@ -24,7 +24,9 @@ public class SistemaLogin {
 
             if (usuarioAutenticado != null) {
                 if (usuarioAutenticado.getTipo().equals("medico")) {
-                    mostrarMenuMedico(usuarioAutenticado);
+                    System.out.println("Medico");
+                    mostrarMenuMedico(usuarioAutenticado, scanner);
+                    System.out.println("Medico");
                 } else if (usuarioAutenticado.getTipo().equals("paciente")) {
                     if (!mostrarMenuPaciente(usuarioAutenticado, scanner)) {
                         break buclePrincipal; // Salir del bucle principal y reiniciar el proceso
@@ -58,15 +60,25 @@ public class SistemaLogin {
         return null; // Si no se encuentra un usuario con las credenciales proporcionadas.
     }
     
-    public static void mostrarMenuMedico(Usuario usuario) {
+    public static void mostrarMenuMedico(Usuario usuario, Scanner scanner) {
         limpiarConsola();
-        System.out.println("Bienvenido, Médico " + usuario.getUsuario());
-        System.out.println("Especialidad: " + usuario.getEspecialidad());
         // Menú específico para médicos
-        System.out.println("1. Ver lista de pacientes");
-        System.out.println("2. Registrar diagnóstico");
-        System.out.println("3. Registrar cita");
-        System.out.println("4. Salir");
+        bucleMenuMedico:
+        while (true) {
+            System.out.println("Bienvenido, Médico " + usuario.getUsuario());
+            System.out.println("Especialidad: " + usuario.getEspecialidad());
+            System.out.println("1. Ver lista de pacientes");
+            System.out.println("2. Registrar diagnóstico");
+            System.out.println("3. Registrar cita");
+            System.out.println("4. Salir");
+
+            int opcion = obtenerOpcion(scanner);
+
+            switch (opcion) {
+                case 4:
+                    break bucleMenuMedico;
+            }
+        }
     }
 
     public static boolean mostrarMenuPaciente(Usuario usuario, Scanner scanner) {
