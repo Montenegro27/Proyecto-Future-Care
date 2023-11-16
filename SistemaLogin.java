@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class SistemaLogin {
 
@@ -60,14 +62,14 @@ public class SistemaLogin {
         return null; // Si no se encuentra un usuario con las credenciales proporcionadas.
     }
     
-    public static void mostrarMenuMedico(Usuario usuario, Scanner scanner) {
+    public static boolean mostrarMenuMedico(Usuario usuario, Scanner scanner) {
         limpiarConsola();
         // Menú específico para médicos
+        System.out.println("Bienvenido, Médico " + usuario.getUsuario());
+        System.out.println("Especialidad: " + usuario.getEspecialidad());
         bucleMenuMedico:
         while (true) {
-            System.out.println("Bienvenido, Médico " + usuario.getUsuario());
-            System.out.println("Especialidad: " + usuario.getEspecialidad());
-            System.out.println("1. Ver lista de pacientes");
+            System.out.println("1. Ver historial de paciente");
             System.out.println("2. Registrar diagnóstico");
             System.out.println("3. Registrar cita");
             System.out.println("4. Salir");
@@ -75,10 +77,25 @@ public class SistemaLogin {
             int opcion = obtenerOpcion(scanner);
 
             switch (opcion) {
+                case 1:
+                    System.out.println("Ingrese el id del paciente: ");
+                    String id_paciente = scanner.next();
+                    historial hist = obtenerPacientePorId(id_paciente);
+                    mostrarMenuHistorialMedicoMedico(hist);
+                    break;
+
+
                 case 4:
-                    break bucleMenuMedico;
+                    if (confirmarApagarPrograma(scanner)) {
+                        return false; // Salir del programa
+                    } else {
+                        break bucleMenuMedico; // Salir del bucle del menú medico y regresar al inicio del bucle principal
+                    }
+                default:
+                    System.out.println("Opción no válida. Inténtalo de nuevo.");
             }
         }
+        return true;
     }
 
     public static boolean mostrarMenuPaciente(Usuario usuario, Scanner scanner) {
@@ -287,7 +304,247 @@ public class SistemaLogin {
         String respuesta = scanner.next().toLowerCase();
         return respuesta.equals("si");
     }
-}
+
+
+
+    public static void mostrarMenuHistorialMedicoMedico(historial paciente) {
+        Scanner scanner = new Scanner(System.in);
+
+        do {
+            limpiarConsola();
+            System.out.println("Historial Médico de " + paciente.getNombre());
+            System.out.println("1. Ver edad");
+            System.out.println("2. Ver sexo");
+            System.out.println("3. Ver grupo sanguíneo");
+            System.out.println("4. Ver altura y peso");
+            System.out.println("5. Ver medicamento actual");
+            System.out.println("6. Ver alergias");
+            System.out.println("7. Editar historial");
+            System.out.println("8. Volver al menú medico");
+
+            int opcion = obtenerOpcion(scanner);
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("Edad: " + paciente.getEdad());
+                    break;
+                case 2:
+                    System.out.println("Sexo: " + paciente.getSexo());
+                    break;
+                case 3:
+                    System.out.println("Grupo Sanguíneo: " + paciente.getGrupoSanguineo());
+                    break;
+                case 4:
+                    System.out.println("Altura y Peso: " + paciente.getAlturaPeso());
+                    break;
+                case 5:
+                    System.out.println("Medicamento Actual: " + paciente.getMedicamentoActual());
+                    break;
+                case 6:
+                    System.out.println("Alergias: " + paciente.getAlergias());
+                    break;
+                case 7:
+                    boolean hola = true;
+                    while(hola){
+                        System.out.println("Que desea editar?");
+                        System.out.println("1. edad");
+                        System.out.println("2. sexo");
+                        System.out.println("3. grupo sanguíneo");
+                        System.out.println("4. altura y peso");
+                        System.out.println("5. medicamento actual");
+                        System.out.println("6. alergias");
+                        System.out.println("7. antecedentes medicos");
+                        System.out.println("8. antecedentes quirurgicos");
+                        System.out.println("9. Volver al menú medico");
+                        int opt = obtenerOpcion(scanner);
+
+                        switch (opt) {
+                            case 1:
+                                System.out.println("Ingrese el nuevo dato:");
+                                String Modificar = scanner.next();
+                                List<historial> listaHistorial = leerCSV("historialm.csv");
+                                for (historial historialM : listaHistorial) {
+                                    if (historialM.getId().equals(paciente.getId())) {
+                                        historialM.setSexo(Modificar);
+                                        break; // No es necesario seguir buscando
+                                    }
+                                }
+                                escribirCSV("historialm.csv", listaHistorial);
+                                break;
+                            case 2:
+                                System.out.println("Ingrese el nuevo dato:");
+                                String Modificar2 = scanner.next();
+                                List<historial> listaHistorial2 = leerCSV("historialm.csv");
+                                for (historial historialM : listaHistorial2) {
+                                    if (historialM.getId().equals(paciente.getId())) {
+                                        historialM.setSexo(Modificar2);
+                                        break; // No es necesario seguir buscando
+                                    }
+                                }
+                                escribirCSV("historialm.csv", listaHistorial2);
+                                break;
+
+                            case 3:
+                                System.out.println("Ingrese el nuevo dato:");
+                                String Modificar3 = scanner.next();
+                                List<historial> listaHistorial3 = leerCSV("historialm.csv");
+                                for (historial historialM : listaHistorial3) {
+                                    if (historialM.getId().equals(paciente.getId())) {
+                                        historialM.setGrupoSanguineo(Modificar3);
+                                        break; // No es necesario seguir buscando
+                                    }
+                                }
+                                escribirCSV("historialm.csv", listaHistorial3);
+                                break;
+                            case 4:
+                                System.out.println("Ingrese el nuevo dato:");
+                                String Modificar4 = scanner.next();
+                                List<historial> listaHistorial4 = leerCSV("historialm.csv");
+                                for (historial historialM : listaHistorial4) {
+                                    if (historialM.getId().equals(paciente.getId())) {
+                                        historialM.setAlturaPeso(Modificar4);
+                                        break; // No es necesario seguir buscando
+                                    }
+                                }
+                                escribirCSV("historialm.csv", listaHistorial4);
+                                break;
+
+                            case 5:
+                                System.out.println("Ingrese el nuevo dato:");
+                                String Modificar5 = scanner.next();
+                                List<historial> listaHistorial5 = leerCSV("historialm.csv");
+                                for (historial historialM : listaHistorial5) {
+                                    if (historialM.getId().equals(paciente.getId())) {
+                                        historialM.setMedicamentoActual(Modificar5);
+                                        break; // No es necesario seguir buscando
+                                    }
+                                }
+                                escribirCSV("historialm.csv", listaHistorial5);
+                                break;
+
+                            case 6:
+                                System.out.println("Ingrese el nuevo dato:");
+                                String Modificar6 = scanner.next();
+                                List<historial> listaHistorial6 = leerCSV("historialm.csv");
+                                for (historial historialM : listaHistorial6) {
+                                    if (historialM.getId().equals(paciente.getId())) {
+                                        historialM.setAlergias(Modificar6);
+                                        break; // No es necesario seguir buscando
+                                    }
+                                }
+                                escribirCSV("historialm.csv", listaHistorial6);
+                                break;
+
+                            case 7:
+                                System.out.println("Ingrese el nuevo dato:");
+                                String Modificar7 = scanner.next();
+                                List<historial> listaHistorial7 = leerCSV("historialm.csv");
+                                for (historial historialM : listaHistorial7) {
+                                    if (historialM.getId().equals(paciente.getId())) {
+                                        historialM.setAntecedentesmed(Modificar7);
+                                        break; // No es necesario seguir buscando
+                                    }
+                                }
+                                escribirCSV("historialm.csv", listaHistorial7);
+                                break;
+                            
+                            case 8:
+                                System.out.println("Ingrese el nuevo dato:");
+                                String Modificar8 = scanner.next();
+                                List<historial> listaHistorial8 = leerCSV("historialm.csv");
+                                for (historial historialM : listaHistorial8) {
+                                    if (historialM.getId().equals(paciente.getId())) {
+                                        historialM.setAntecedentesqui(Modificar8);
+                                        break; // No es necesario seguir buscando
+                                    }
+                                }
+                                escribirCSV("historialm.csv", listaHistorial8);
+                                break;
+
+                            case 9:
+                                hola = false;
+                            }   
+                    }                    
+                    break;
+                case 8:
+                    return; // Salir y volver al menú paciente
+                default:
+                    System.out.println("Opción no válida. Inténtalo de nuevo.");
+            }
+
+            System.out.println("¿Quieres ver más información? (si/no)");
+            String respuesta = scanner.next().toLowerCase();
+
+            if (!respuesta.equals("si")) {
+                return; // Salir si la respuesta no es "si"
+            }
+
+        } while (true); // Repetir el bucle mientras el usuario quiera ver más información
+    }
+
+
+//leer archivo .csv de historial
+    private static List<historial> leerCSV(String archivo) {
+    List<historial> listaHistorial = new ArrayList<>();
+
+    try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+        // Leer la fila de encabezado (ignorarla)
+        br.readLine();
+
+        String linea;
+        while ((linea = br.readLine()) != null) {
+            String[] datos = linea.split(",");
+
+            String id = datos[0].trim();
+            String nombre = datos[1].trim();
+            String edad = datos[2].trim();
+            String sexo = datos[3].trim();
+            String grupo = datos[4].trim();
+            String akturapeso = datos[5].trim();
+            String ant_medicos = datos[6].trim();
+            String ant_quir = datos[7].trim();
+            String medActual = datos[8].trim();
+            String alergia = datos[9].trim();
+
+            listaHistorial.add(new historial(id, nombre, edad, sexo, grupo, akturapeso, ant_medicos, ant_quir, medActual, alergia));
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+    return listaHistorial;
+    }
+
+    // Método para escribir datos en un archivo CSV
+    private static void escribirCSV(String archivo, List<historial> listaHistorial) {
+        try (FileWriter writer = new FileWriter(archivo)) {
+            // Escribir la fila de encabezado
+            writer.write("id,nombre,edad,sexo,grupo sanguineo,altura y peso,antecedentes medicos,antecedentes quirurgicos,medicamento actual,alergias\n");
+
+            // Escribir los datos
+            for (historial persona : listaHistorial) {
+                writer.write(persona.getId() + "," + persona.getNombre() + "," + persona.getEdad() + "," + persona.getSexo() + "," + persona.getGrupoSanguineo() + "," + persona.getAlturaPeso() + "," + persona.getantecedentesmed() + "," + persona.getantecedentesqui() + "," + persona.getMedicamentoActual() + "," + persona.getAlergias() + "," + persona.getId() + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private static void modificarCSV(String idModificr, String mod) {
+        List<historial> listaHistorial = leerCSV("historialm.csv");
+        for (historial historialM : listaHistorial) {
+            if (historialM.getId().equals(idModificr)) {
+                historialM.setEdad(mod);
+                break; // No es necesario seguir buscando
+            }
+        }
+
+        escribirCSV("historialm.csv", listaHistorial);
+        
+    }
+    
+}                                
 
 class Usuario {
     private String usuario;

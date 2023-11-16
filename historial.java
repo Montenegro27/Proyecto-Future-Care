@@ -65,4 +65,42 @@ class historial {
     public String getAlergias() {
         return alergias;
     }
+
+//setters
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setEdad(String edad) {
+        this.edad = edad;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public void setGrupoSanguineo(String grupoSanguineo) {
+        this.grupoSanguineo = grupoSanguineo;
+    }
+
+    public void setAlturaPeso(String alturaPeso) {
+        this.alturaPeso = alturaPeso;
+    }
+
+    public void setAntecedentesmed(String antecedentesmed) {
+        this.antecedentesmed = antecedentesmed;
+    }
+
+    public void setAntecedentesqui(String antecedentesqui) {
+        this.antecedentesqui = antecedentesqui;
+    }
+
+    public void setMedicamentoActual(String medicamentoActual) {
+        this.medicamentoActual = medicamentoActual;
+    }
+
+    public void setAlergias(String alergias) {
+        this.alergias = alergias;
+    }
+
 }

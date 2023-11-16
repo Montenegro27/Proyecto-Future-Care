@@ -1,4 +1,4 @@
 id,nombre,edad,sexo,grupo sanguineo,altura y peso,antecedentes medicos,antecedentes quirurgicos,medicamento actual,alergias
-4,juan,24,Masculino,A+,160 cm y 140 lb,Con anterioridad visito doctores por problemas de sobrepeso,N/A,Supernova y Cosmos,N/A
-1,diego,30,Masculino,B-,170 cm y 160 lb,Dolores constantes en la parte inferior del abdomen,Operación para retirar páncreas,Analgésicos cada 12 hr,N/A
-6,jose,19,Masculino,O+,184 cm y 176 lb,Sufrió derrame cerebrovascular,Operación para estabilizar signos cardíacos,Xarelto 10 mg.,N/A
+4,juan,24,Femenino,B-,150,Con anterioridad visito doctores por problemas de sobrepeso,N/A,Supernova y Cosmos,N/A,4
+1,diego,31,Masculino,B-,170 cm y 160 lb,Dolores constantes en la parte inferior del abdomen,Operación para retirar páncreas,Analgésicos cada 12 hr,N/A,1
+6,jose,19,Masculino,O+,184 cm y 176 lb,Sufrió derrame cerebrovascular,Operación para estabilizar signos cardíacos,Xarelto 10 mg.,N/A,6
