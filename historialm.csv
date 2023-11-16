@@ -1,4 +1,31 @@
 id,nombre,edad,sexo,grupo sanguineo,altura y peso,antecedentes medicos,antecedentes quirurgicos,medicamento actual,alergias
-4,juan,24,Femenino,B-,150,Con anterioridad visito doctores por problemas de sobrepeso,N/A,Supernova y Cosmos,N/A,4
-1,diego,31,Masculino,B-,170 cm y 160 lb,Dolores constantes en la parte inferior del abdomen,Operación para retirar páncreas,Analgésicos cada 12 hr,N/A,1
-6,jose,19,Masculino,O+,184 cm y 176 lb,Sufrió derrame cerebrovascular,Operación para estabilizar signos cardíacos,Xarelto 10 mg.,N/A,6
+1,diego,31,Masculino,B-,170 cm y 160 lb,Dolores constantes en la parte inferior del abdomen,Operación para retirar páncreas,Analgésicos cada 12 hr,Alergia al polvo
+2,Luis,36,Masculino,A+,178 cm y 160 lb,Problemas cardiacos,N/A,Lisinopril,N/A
+3,María,28,Femenino,A+,162 cm y 135 lb,Asma crónica,N/A,Inhalador de rescate,Alergia al polen
+4,juan,24,Femenino,B-,150,Con anterioridad visito doctores por problemas de sobrepeso,N/A,Supernova y Cosmos,N/A
+5,Ana,42,Femenino,AB+,155 cm y 130 lb,Hipertensión arterial,Extirpación de vesícula biliar,Losartán 50 mg.,N/A
+6,jose,19,Masculino,O+,184 cm y 176 lb,Sufrió derrame cerebrovascular,Operación para estabilizar signos cardíacos,Xarelto 10 mg.,N/A
+7,Carlos,35,Masculino,O-,178 cm y 185 lb,Alergia al polen,Apéndice removido,Clarinex,Alergia al maní
+8,Laura,29,Femenino,B-,160 cm y 140 lb,Dolor de cabeza crónico,N/A,Paracetamol 500 mg.,N/A
+9,Sofía,27,Femenino,A-,166 cm y 150 lb,N/A,Amigdalectomía,Levothyroxine 50 mcg.,Alergia al polvo
+10,Ricardo,45,Masculino,O-,175 cm y 180 lb,Problemas de espalda,N/A,Relajantes musculares,N/A
+11,Miguel,45,Masculino,B+,175 cm y 200 lb,Diabetes tipo 2,N/A,Insulina glargina,Alergia a la penicilina
+12,Elena,23,Femenino,O+,160 cm y 140 lb,Dolor abdominal crónico,N/A,Analgésicos,N/A
+13,Isabella,23,Femenino,AB-,160 cm y 140 lb,Migrañas frecuentes,N/A,Ibuprofeno 400 mg.,N/A
+14,Roberto,31,Masculino,A+,180 cm y 170 lb,Problemas respiratorios crónicos,N/A,Inhalador de mantenimiento,N/A
+15,Marta,28,Femenino,O+,160 cm y 120 lb,Problemas digestivos recurrentes,N/A,Nexium,Alergia al gluten
+16,Alejandro,22,Masculino,A-,180 cm y 160 lb,Alergia estacional,N/A,Aerius,Alergia a los gatos
+17,Ana,35,Femenino,O-,165 cm y 140 lb,Hipertensión,Apéndice removido,Enalapril y Amlodipino,N/A
+18,Javier,27,Masculino,B+,175 cm y 150 lb,Asma crónica,N/A,Salbutamol,Alergia al polvo
+19,Sofía,30,Femenino,AB+,170 cm y 130 lb,Problemas de tiroides,N/A,Eutirox,Alergia al polen
+20,Lucas,24,Masculino,O-,185 cm y 170 lb,Problemas de espalda,N/A,Ibuprofeno,N/A
+21,Mariana,32,Femenino,A+,162 cm y 125 lb,Problemas gastrointestinales,N/A,Domperidona,N/A
+22,Adrián,26,Masculino,B-,180 cm y 160 lb,Alergias alimentarias,N/A,Epinefrina,N/A
+23,Carmen,29,Femenino,O+,155 cm y 120 lb,Migrañas frecuentes,N/A,Sumatriptán,Alergia a los frutos secos
+24,Ricardo,31,Masculino,AB-,170 cm y 140 lb,Problemas de rodilla,N/A,Paracetamol,N/A
+25,Elena,27,Femenino,B+,168 cm y 130 lb,Problemas de sueño,N/A,Melatonina,Alergia al polvo
+26,Hugo,23,Masculino,O+,175 cm y 150 lb,Problemas de ansiedad,N/A,Alprazolam,Alergia a los ácaros
+27,Isabel,34,Femenino,A-,160 cm y 120 lb,Problemas dermatológicos,N/A,Clobetasol,Alergia a los mariscos
+28,Diego,25,Masculino,B+,180 cm y 160 lb,Alergias estacionales,N/A,Cetirizina,Alergia a las avispas
+29,Laura,28,Femenino,O-,165 cm y 140 lb,Problemas respiratorios,N/A,Salbutamol,Alergia al polvo
+30,Carlos,22,Masculino,A+,175 cm y 150 lb,Problemas digestivos,N/A,Omeprazol,Alergia a los cacahuetes
