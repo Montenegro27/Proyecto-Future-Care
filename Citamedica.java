@@ -1,18 +1,22 @@
 import java.util.Random;
 
 public class CitaMedica {
-    private int id;
-    private Paciente paciente;
-    private Medico medico;
+    private int idc;
+    private int idp;
+    private int idm;
     private String fecha;
     private String hora;
 
-    public CitaMedica(int id, Paciente paciente, Medico medico, String fecha, String hora) {
-        this.id = generarID();
-        this.paciente = paciente;
-        this.medico = medico;
+    public CitaMedica(int idp, int idm, String fecha, String hora) {
+        this.idc = generarID();
+        this.idp = idp;
+        this.idm = idm;
         this.fecha = fecha;
         this.hora = hora;
+    }
+
+    public int getId() {
+        return idc;
     }
 
     public int generarID() {
@@ -25,7 +29,7 @@ public class CitaMedica {
     // Getters y setters
 
     public String toString() {
-        return "ID: " + id + "\nFecha: " + fecha + "\nHora: " + hora + "\nPaciente: \n" + paciente + "\nMedico: \n" + medico;
+        return "ID: " + idc + "\nFecha: " + fecha + "\nHora: " + hora + "\nPaciente: \n" + idp + "\nMedico: \n" + idm;
     }
 }
 

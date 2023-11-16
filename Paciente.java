@@ -1,10 +1,10 @@
 public class Paciente {
-    private int id;
+    private int idp;
     private String nombre;
     private String seguroMedico;
 
-    public Paciente(int id, String nombre, String seguroMedico) {
-        this.id = id;
+    public Paciente(int idp, String nombre, String seguroMedico) {
+        this.idp = idp;
         this.nombre = nombre;
         this.seguroMedico = seguroMedico;
     }
@@ -20,11 +20,11 @@ public class Paciente {
     }
 
     public int getID() {
-        return id;
+        return idp;
     }
 
     public String toString() {
-        return "ID: " + id + "\nNombre: " + nombre + "\nSeguro Médico: " + seguroMedico;
+        return "ID: " + idp + "\nNombre: " + nombre + "\nSeguro Médico: " + seguroMedico;
     }
 
 }

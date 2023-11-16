@@ -1,10 +1,10 @@
 class Medico {
-    private int id;
+    private int idm;
     private String nombre;
     private String especialidad;
 
-    public Medico(int id, String nombre, String especialidad) {
-        this.id = id;
+    public Medico(int idm, String nombre, String especialidad) {
+        this.idm = idm;
         this.nombre = nombre;
         this.especialidad = especialidad;
     }
@@ -12,6 +12,6 @@ class Medico {
     // Getters y setters
 
     public String toString() {
-        return "ID: " + id + "\nNombre: " + nombre + "\nEspecialidad: " + especialidad;
+        return "ID: " + idm + "\nNombre: " + nombre + "\nEspecialidad: " + especialidad;
     }
 }
