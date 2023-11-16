@@ -1,9 +1,5 @@
 // Este archivo debera ejecutarse para el funcionamiento del programa
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Scanner;
 import java.io.*;
 import java.util.*;
 
@@ -62,6 +58,7 @@ public class SistemaLogin {
         return null; // Si no se encuentra un usuario con las credenciales proporcionadas.
     }
     
+    
     public static boolean mostrarMenuMedico(Usuario usuario, Scanner scanner) {
         limpiarConsola();
         // Menú específico para médicos
@@ -81,9 +78,13 @@ public class SistemaLogin {
                     System.out.println("Ingrese el id del paciente: ");
                     String id_paciente = scanner.next();
                     historial hist = obtenerPacientePorId(id_paciente);
-                    mostrarMenuHistorialMedicoMedico(hist);
-                    break;
 
+                    if (hist != null) {
+                        mostrarMenuHistorialMedicoMedico(hist);
+                    } else {
+                        System.out.println("No se encontró información para el ID proporcionado. Inténtalo de nuevo.");
+                    }
+                    break;
 
                 case 4:
                     if (confirmarApagarPrograma(scanner)) {
@@ -97,7 +98,6 @@ public class SistemaLogin {
         }
         return true;
     }
-
     public static boolean mostrarMenuPaciente(Usuario usuario, Scanner scanner) {
         bucleMenuPaciente:
         while (true) {
