@@ -5,6 +5,14 @@ import java.util.*;
 
 public class SistemaLogin {
 
+    private static SistemaLogin instancia;
+
+    public static SistemaLogin getInstancia() {
+        if (instancia == null) {
+            instancia = new SistemaLogin();
+        }
+        return instancia;
+    }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -128,8 +136,12 @@ public class SistemaLogin {
                     }
                     break;
                 case 3:
-                    // Realizar acciones de revisar citas (puedes agregar más funcionalidades aquí)
-                    break;
+                        System.out.println("Ingrese el ID del paciente: ");
+                        String numSeguro = scanner.next();
+
+                        Gestor.mostrarCitasPaciente(numSeguro);
+                        break;
+                
                 case 4:
                     if (confirmarApagarPrograma(scanner)) {
                         return false; // Salir del programa
@@ -574,4 +586,7 @@ class Usuario {
     public String getNumSeguro() {
         return numSeguro;
     }
+
+
 }
+

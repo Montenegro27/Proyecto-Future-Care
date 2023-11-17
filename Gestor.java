@@ -1,18 +1,23 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Gestor {
-    private Calendario calendario;
+    private static Calendario calendario;
     private Scanner scanner;
 
-    public Gestor() {
+    static {
         calendario = new Calendario();
+    }
+
+    public Gestor() {
         scanner = new Scanner(System.in);
     }
 
     public void agendarCita() {
 
         System.out.println("Ingrese el ID del paciente: ");
-        int idp = scanner.nextInt();
+        String idp = scanner.next();
 
         System.out.println("Ingrese el ID del médico: ");
         int idm = scanner.nextInt();
@@ -29,5 +34,56 @@ public class Gestor {
 
         System.out.println("Cita agendada con éxito.");
     }
+
+
+// public static List<CitaMedica> obtenerCitasPaciente(String numSeguro) {
+//     List<CitaMedica> citasPaciente = new ArrayList<>();
+
+//     for (CitaMedica cita : calendario.obtenerCitas()) {
+//         if (cita.getIdP().equals(numSeguro)) {
+//             citasPaciente.add(cita);
+//         }
+//     }
+
+//     return citasPaciente;
+// }
+
+// public static void mostrarCitasPaciente(String numSeguro) {
+//     List<CitaMedica> citasPaciente = obtenerCitasPaciente(numSeguro);
+
+//     if (citasPaciente.isEmpty()) {
+//         System.out.println("El paciente no tiene citas programadas.");
+//     } else {
+//         System.out.println("Citas del paciente con ID " + numSeguro + ":");
+//         for (CitaMedica cita : citasPaciente) {
+//             System.out.println(cita);
+//         }
+//     }
+// }
+public static void mostrarCitasPaciente(String numSeguro) {
+    List<CitaMedica> citasPaciente = obtenerCitasPaciente(numSeguro);
+
+    if (citasPaciente.isEmpty()) {
+        System.out.println("El paciente no tiene citas programadas.");
+    } else {
+        System.out.println("Citas del paciente con ID " + numSeguro + ":");
+        for (CitaMedica cita : citasPaciente) {
+            System.out.println(cita);
+        }
+    }
+}
+
+public static List<CitaMedica> obtenerCitasPaciente(String numSeguro) {
+    List<CitaMedica> citasPaciente = new ArrayList<>();
+
+    for (CitaMedica cita : calendario.obtenerCitas()) {
+        if (cita.getIdP().equals(numSeguro)) {
+            citasPaciente.add(cita);
+        }
+    }
+
+    return citasPaciente;
+}
+
 
 }

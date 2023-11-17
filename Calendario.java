@@ -18,7 +18,4 @@ public class Calendario {
     public List<CitaMedica> obtenerCitas() {
         return citas;
     }
-
-
-
 }

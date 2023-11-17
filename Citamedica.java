@@ -2,12 +2,12 @@ import java.util.Random;
 
 public class CitaMedica {
     private int idc;
-    private int idp;
+    private String idp;
     private int idm;
     private String fecha;
     private String hora;
 
-    public CitaMedica(int idp, int idm, String fecha, String hora) {
+    public CitaMedica(String idp, int idm, String fecha, String hora) {
         this.idc = generarID();
         this.idp = idp;
         this.idm = idm;
@@ -15,9 +15,14 @@ public class CitaMedica {
         this.hora = hora;
     }
 
-    public int getId() {
+    public int getIdC() {
         return idc;
     }
+
+    public String getIdP() {
+        return idp;
+    }
+    
 
     public int generarID() {
         Random random = new Random();
