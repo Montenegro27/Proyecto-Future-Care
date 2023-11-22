@@ -144,6 +144,10 @@ public class SistemaLogin {
                         String numSeguro = scanner.next();
 
                         Gestor.mostrarCitasPaciente(numSeguro);
+
+                        System.out.println("Presione Enter para continuar...");
+                        scanner.nextLine();  // Consumir el '\n' que quedó pendiente
+                        scanner.nextLine();  // Esperar a que el usuario presione Enter
                         break;
                 
                 case 4:
