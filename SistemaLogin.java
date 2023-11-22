@@ -93,6 +93,10 @@ public class SistemaLogin {
                         System.out.println("No se encontró información para el ID proporcionado. Inténtalo de nuevo.");
                     }
                     break;
+                
+                case 3: 
+                    Gestor.agendarCita();
+                    break;
 
                 case 4:
                     if (confirmarApagarPrograma(scanner)) {

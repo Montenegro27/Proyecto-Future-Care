@@ -4,17 +4,18 @@ import java.util.Scanner;
 
 public class Gestor {
     private static Calendario calendario;
-    private Scanner scanner;
+    private static Scanner scanner;
 
     static {
         calendario = new Calendario();
-    }
-
-    public Gestor() {
         scanner = new Scanner(System.in);
     }
 
-    public void agendarCita() {
+    public Gestor() {
+
+    }
+
+    public static void agendarCita() {
 
         System.out.println("Ingrese el ID del paciente: ");
         String idp = scanner.next();
