@@ -1,11 +1,11 @@
 id,nombre,edad,sexo,grupo sanguineo,altura y peso,antecedentes medicos,antecedentes quirurgicos,medicamento actual,alergias
-1,diego,31,Masculino,B-,170 cm y 160 lb,Dolores constantes en la parte inferior del abdomen,Operación para retirar páncreas,Analgésicos cada 12 hr,Alergia al polvo
+1,diego,30,Masculino,A,170,Dolores constantes en la parte inferior del abdomen,Operación para retirar páncreas,Analgésicos cada 12 hr,Alergia al polvo
 2,Luis,36,Masculino,A+,178 cm y 160 lb,Problemas cardiacos,N/A,Lisinopril,N/A
 3,María,28,Femenino,A+,162 cm y 135 lb,Asma crónica,N/A,Inhalador de rescate,Alergia al polen
 4,juan,24,Femenino,B-,150,Con anterioridad visito doctores por problemas de sobrepeso,N/A,Supernova y Cosmos,N/A
 5,Ana,42,Femenino,AB+,155 cm y 130 lb,Hipertensión arterial,Extirpación de vesícula biliar,Losartán 50 mg.,N/A
 6,jose,19,Masculino,O+,184 cm y 176 lb,Sufrió derrame cerebrovascular,Operación para estabilizar signos cardíacos,Xarelto 10 mg.,N/A
-7,Carlos,35,Masculino,O-,178 cm y 185 lb,Alergia al polen,Apéndice removido,Clarinex,Alergia al maní
+7,Carlos,30,Masculino,O-,178 cm y 185 lb,Alergia al polen,Apéndice removido,Clarinex,Alergia al maní
 8,Laura,29,Femenino,B-,160 cm y 140 lb,Dolor de cabeza crónico,N/A,Paracetamol 500 mg.,N/A
 9,Sofía,27,Femenino,A-,166 cm y 150 lb,N/A,Amigdalectomía,Levothyroxine 50 mcg.,Alergia al polvo
 10,Ricardo,45,Masculino,O-,175 cm y 180 lb,Problemas de espalda,N/A,Relajantes musculares,N/A

@@ -385,7 +385,7 @@ public class SistemaLogin {
                                 List<historial> listaHistorial = leerCSV("historialm.csv");
                                 for (historial historialM : listaHistorial) {
                                     if (historialM.getId().equals(paciente.getId())) {
-                                        historialM.setSexo(Modificar);
+                                        historialM.setEdad(Modificar);
                                         break; // No es necesario seguir buscando
                                     }
                                 }
@@ -543,7 +543,8 @@ public class SistemaLogin {
 
             // Escribir los datos
             for (historial persona : listaHistorial) {
-                writer.write(persona.getId() + "," + persona.getNombre() + "," + persona.getEdad() + "," + persona.getSexo() + "," + persona.getGrupoSanguineo() + "," + persona.getAlturaPeso() + "," + persona.getantecedentesmed() + "," + persona.getantecedentesqui() + "," + persona.getMedicamentoActual() + "," + persona.getAlergias() + "," + persona.getId() + "\n");
+                /*id,nombre,edad,sexo,grupo sanguineo,altura y peso,antecedentes medicos,antecedentes quirurgicos,medicamento actual,alergias*/
+                writer.write(persona.getId() + "," + persona.getNombre() + "," + persona.getEdad() + "," + persona.getSexo() + "," + persona.getGrupoSanguineo() + "," + persona.getAlturaPeso() + "," + persona.getantecedentesmed() + "," + persona.getantecedentesqui() + "," + persona.getMedicamentoActual() + "," + persona.getAlergias() + "\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
